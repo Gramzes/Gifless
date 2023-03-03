@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gifless</string>
+    <string name="programming">Programming</string>
+    <string name="top">Top</string>
+    <string name="error_message">Произошла ошибка при загрузке данных. Проверьте подключение к сети.</string>
+    <string name="retry">ПОВТОРИТЬ</string>
+</resources>
