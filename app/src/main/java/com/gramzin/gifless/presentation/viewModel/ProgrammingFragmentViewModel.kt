@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gramzin.gifless.common.Resource
 import com.gramzin.gifless.domain.models.Gif
-import com.gramzin.gifless.domain.useusecases.GetNextProgrammingGifsUseCase
+import com.gramzin.gifless.domain.usecases.GetNextProgrammingGifsUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 

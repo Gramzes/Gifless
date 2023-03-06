@@ -1,13 +1,13 @@
-package com.gramzin.gifless.presentation
+package com.gramzin.gifless.presentation.fragments
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -17,22 +17,21 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.gramzin.gifless.R
 import com.gramzin.gifless.appComponent
-import com.gramzin.gifless.databinding.FragmentProframmingGifBinding
+import com.gramzin.gifless.databinding.FragmentTopGifBinding
 import com.gramzin.gifless.domain.models.Gif
-import com.gramzin.gifless.presentation.viewModel.ProgrammingFragmentViewModel
+import com.gramzin.gifless.presentation.viewModel.TopFragmentViewModel
 import com.gramzin.gifless.presentation.viewModel.factory.ViewModelFactory
 import jp.wasabeef.glide.transformations.BlurTransformation
 import javax.inject.Inject
 
-
-class ProgrammingGifFragment : Fragment() {
-    private lateinit var binding: FragmentProframmingGifBinding
-    private val viewModel: ProgrammingFragmentViewModel by viewModels{ factory.get() }
+class TopGifFragment : Fragment() {
+    lateinit var binding: FragmentTopGifBinding
+    val viewModel: TopFragmentViewModel by viewModels{ factory.get() }
 
     @Inject
     lateinit var factory: dagger.Lazy<ViewModelFactory>
 
-    private val gifLoadListener = object:RequestListener<Drawable>{
+    private val gifLoadListener = object: RequestListener<Drawable> {
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
                                   isFirstResource: Boolean): Boolean {
             return false
@@ -50,8 +49,9 @@ class ProgrammingGifFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProframmingGifBinding.inflate(inflater, container, false)
+        binding = FragmentTopGifBinding.inflate(inflater, container, false)
         requireContext().appComponent.inject(this)
+
         init()
         viewModel.nextGif()
         return binding.root

@@ -2,8 +2,8 @@ package com.gramzin.gifless.presentation.viewModel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.gramzin.gifless.domain.useusecases.GetNextProgrammingGifsUseCase
-import com.gramzin.gifless.domain.useusecases.GetNextTopGifsUseCase
+import com.gramzin.gifless.domain.usecases.GetNextProgrammingGifsUseCase
+import com.gramzin.gifless.domain.usecases.GetNextTopGifsUseCase
 import com.gramzin.gifless.presentation.viewModel.ProgrammingFragmentViewModel
 import com.gramzin.gifless.presentation.viewModel.TopFragmentViewModel
 import javax.inject.Inject
