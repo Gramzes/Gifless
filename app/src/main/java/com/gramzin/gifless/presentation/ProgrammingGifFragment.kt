@@ -16,16 +16,21 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.gramzin.gifless.R
+import com.gramzin.gifless.appComponent
 import com.gramzin.gifless.databinding.FragmentProframmingGifBinding
 import com.gramzin.gifless.domain.models.Gif
 import com.gramzin.gifless.presentation.viewModel.ProgrammingFragmentViewModel
 import com.gramzin.gifless.presentation.viewModel.factory.ViewModelFactory
 import jp.wasabeef.glide.transformations.BlurTransformation
+import javax.inject.Inject
 
 
 class ProgrammingGifFragment : Fragment() {
     private lateinit var binding: FragmentProframmingGifBinding
-    private val viewModel: ProgrammingFragmentViewModel by viewModels{ ViewModelFactory(requireContext().applicationContext) }
+    private val viewModel: ProgrammingFragmentViewModel by viewModels{ factory.get() }
+
+    @Inject
+    lateinit var factory: dagger.Lazy<ViewModelFactory>
 
     private val gifLoadListener = object:RequestListener<Drawable>{
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
@@ -46,7 +51,7 @@ class ProgrammingGifFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProframmingGifBinding.inflate(inflater, container, false)
-
+        requireContext().appComponent.inject(this)
         init()
         viewModel.nextGif()
         return binding.root

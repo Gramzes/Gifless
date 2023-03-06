@@ -3,8 +3,9 @@ package com.gramzin.gifless.data
 import com.gramzin.gifless.data.storage.GifRemoteDataStorage
 import com.gramzin.gifless.domain.models.Gif
 import com.gramzin.gifless.domain.repository.GifRepository
+import javax.inject.Inject
 
-class GifRepositoryImpl(private val remoteDataStorage: GifRemoteDataStorage): GifRepository {
+class GifRepositoryImpl @Inject constructor(private val remoteDataStorage: GifRemoteDataStorage): GifRepository {
 
     override suspend fun getProgrammingGifs(): List<Gif> {
         val result = remoteDataStorage.getProgrammingGifs()

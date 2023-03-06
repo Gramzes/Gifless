@@ -17,6 +17,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.gramzin.gifless.R
+import com.gramzin.gifless.appComponent
 import com.gramzin.gifless.databinding.FragmentProframmingGifBinding
 import com.gramzin.gifless.databinding.FragmentTopGifBinding
 import com.gramzin.gifless.domain.models.Gif
@@ -24,10 +25,14 @@ import com.gramzin.gifless.presentation.viewModel.TopFragmentViewModel
 import com.gramzin.gifless.presentation.viewModel.factory.ViewModelFactory
 import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class TopGifFragment : Fragment() {
     lateinit var binding: FragmentTopGifBinding
-    val viewModel: TopFragmentViewModel by viewModels{ ViewModelFactory(requireContext().applicationContext) }
+    val viewModel: TopFragmentViewModel by viewModels{ factory.get() }
+
+    @Inject
+    lateinit var factory: dagger.Lazy<ViewModelFactory>
 
     private val gifLoadListener = object: RequestListener<Drawable> {
         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
@@ -48,6 +53,7 @@ class TopGifFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopGifBinding.inflate(inflater, container, false)
+        requireContext().appComponent.inject(this)
 
         init()
         viewModel.nextGif()

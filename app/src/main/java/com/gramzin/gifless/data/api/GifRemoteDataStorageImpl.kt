@@ -4,8 +4,9 @@ import com.gramzin.gifless.data.api.models.Gif
 import com.gramzin.gifless.data.storage.GifRemoteDataStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class GifRemoteDataStorageImpl(private val service: GifsApi): GifRemoteDataStorage {
+class GifRemoteDataStorageImpl @Inject constructor(private val service: GifsApi): GifRemoteDataStorage {
     private var nextPageInProgramming: String? = null
     private var nextPageInTop: String? = null
 

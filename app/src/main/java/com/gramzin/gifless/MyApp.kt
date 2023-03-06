@@ -1,18 +1,20 @@
 package com.gramzin.gifless
 
 import android.app.Application
-import com.gramzin.gifless.data.GifRepositoryImpl
-import com.gramzin.gifless.data.api.NetworkModule
-import com.gramzin.gifless.data.api.GifRemoteDataStorageImpl
-import com.gramzin.gifless.domain.repository.GifRepository
+import android.content.Context
+import com.gramzin.gifless.di.component.AppComponent
+import com.gramzin.gifless.di.component.DaggerAppComponent
 
 class MyApp: Application() {
-    lateinit var repository: GifRepository
-
+    lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
-        val remoteStorage = GifRemoteDataStorageImpl(NetworkModule.gifsApiService)
-
-        repository = GifRepositoryImpl(remoteStorage)
+        appComponent = DaggerAppComponent.create()
     }
 }
+
+val Context.appComponent: AppComponent
+    get() = when(this){
+        is MyApp -> appComponent
+        else -> applicationContext.appComponent
+    }
