@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
 @Module(includes = [NetworkBindModule::class])
 object NetworkModule{
@@ -33,6 +34,7 @@ object NetworkModule{
             .build()
     }
 
+    @Singleton
     @Provides
     fun provideGifsApi(retrofit: Retrofit): GifsApi {
         return retrofit.create(GifsApi::class.java)

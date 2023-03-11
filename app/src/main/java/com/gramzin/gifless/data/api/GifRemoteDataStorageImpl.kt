@@ -12,12 +12,7 @@ class GifRemoteDataStorageImpl @Inject constructor(private val service: GifsApi)
 
     override suspend fun getProgrammingGifs(): List<Gif> {
         val result = withContext(Dispatchers.IO) {
-            try {
-                service.getProgrammingGifs(nextPageInProgramming)
-            }
-            catch (e: java.lang.Exception){
-                throw e
-            }
+            service.getProgrammingGifs(nextPageInProgramming)
         }
         nextPageInProgramming = result.next
 
@@ -31,12 +26,7 @@ class GifRemoteDataStorageImpl @Inject constructor(private val service: GifsApi)
 
     override suspend fun getTopGifs(): List<Gif> {
         val result = withContext(Dispatchers.IO) {
-            try {
-                service.getTopGifs(nextPageInTop)
-            }
-            catch (e: Exception){
-                throw e
-            }
+            service.getTopGifs(nextPageInTop)
         }
         nextPageInTop = result.next
 
