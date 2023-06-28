@@ -1,7 +1,7 @@
 package com.gramzin.gifless.di.module
 
+import com.gramzin.gifless.data.api.giphy_api.GifRemoteDataStorageImpl
 import com.gramzin.gifless.data.repository.GifRepositoryImpl
-import com.gramzin.gifless.data.api.GifRemoteDataStorageImpl
 import com.gramzin.gifless.data.storage.GifRemoteDataStorage
 import com.gramzin.gifless.domain.repository.GifRepository
 import dagger.Binds
@@ -14,6 +14,11 @@ interface NetworkBindModule{
     fun GifRepositoryImpl_to_GifRepository(
         gifRepositoryImpl: GifRepositoryImpl
     ): GifRepository
+
+    /*@Binds
+    fun GifRemoteDataStorageImpl_to_GifRemoteDataStorage(
+        gifRemoteDataStorageImpl: GifRemoteDataStorageImpl
+    ): GifRemoteDataStorage*/
 
     @Binds
     fun GifRemoteDataStorageImpl_to_GifRemoteDataStorage(

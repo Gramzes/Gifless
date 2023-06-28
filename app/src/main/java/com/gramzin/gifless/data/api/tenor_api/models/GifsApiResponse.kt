@@ -1,4 +1,4 @@
-package com.gramzin.gifless.data.api.models
+package com.gramzin.gifless.data.api.tenor_api.models
 
 import com.gramzin.gifless.domain.models.Gif as DomainGif
 

@@ -1,7 +1,8 @@
 package com.gramzin.gifless.di.module
 
 import com.gramzin.gifless.common.Utils
-import com.gramzin.gifless.data.api.GifsApi
+import com.gramzin.gifless.data.api.giphy_api.GiphyGifsApi
+import com.gramzin.gifless.data.api.tenor_api.TenorGifsApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,7 +37,13 @@ object NetworkModule{
 
     @Singleton
     @Provides
-    fun provideGifsApi(retrofit: Retrofit): GifsApi {
-        return retrofit.create(GifsApi::class.java)
+    fun provideTenorGifsApi(retrofit: Retrofit): TenorGifsApi {
+        return retrofit.create(TenorGifsApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGiphyGifsApi(retrofit: Retrofit): GiphyGifsApi {
+        return retrofit.create(GiphyGifsApi::class.java)
     }
 }

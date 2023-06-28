@@ -1,11 +1,10 @@
-package com.gramzin.gifless.data.api
+package com.gramzin.gifless.data.api.tenor_api
 
-import com.gramzin.gifless.data.api.models.GifsApiResponse
-import retrofit2.Response
+import com.gramzin.gifless.data.api.tenor_api.models.GifsApiResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface GifsApi {
+interface TenorGifsApi {
     companion object{
         private const val KEY = "AIzaSyBo2tub7ainYK9S5lEJ2-hCHJNo1wTzKXI"
     }
