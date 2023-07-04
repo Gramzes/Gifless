@@ -1,8 +1,11 @@
 package com.gramzin.gifless.di.module
 
-import com.gramzin.gifless.data.api.giphy_api.GifRemoteDataStorageImpl
+import com.gramzin.gifless.data.api.giphy_api.GiphyRemoteDataStorageImpl
+import com.gramzin.gifless.data.api.tenor_api.TenorRemoteDataStorageImpl
 import com.gramzin.gifless.data.repository.GifRepositoryImpl
 import com.gramzin.gifless.data.storage.GifRemoteDataStorage
+import com.gramzin.gifless.di.qualifiers.GiphyApi
+import com.gramzin.gifless.di.qualifiers.TenorApi
 import com.gramzin.gifless.domain.repository.GifRepository
 import dagger.Binds
 import dagger.Module
@@ -15,13 +18,15 @@ interface NetworkBindModule{
         gifRepositoryImpl: GifRepositoryImpl
     ): GifRepository
 
-    /*@Binds
-    fun GifRemoteDataStorageImpl_to_GifRemoteDataStorage(
-        gifRemoteDataStorageImpl: GifRemoteDataStorageImpl
-    ): GifRemoteDataStorage*/
-
+    @GiphyApi
     @Binds
-    fun GifRemoteDataStorageImpl_to_GifRemoteDataStorage(
-        gifRemoteDataStorageImpl: GifRemoteDataStorageImpl
+    fun GiphyRemoteDataStorageImpl_to_GifRemoteDataStorage(
+        giphyRemoteDataStorageImpl: GiphyRemoteDataStorageImpl
+    ): GifRemoteDataStorage
+
+    @TenorApi
+    @Binds
+    fun TenorRemoteDataStorageImpl_to_GifRemoteDataStorage(
+        tenorRemoteDataStorageImpl: TenorRemoteDataStorageImpl
     ): GifRemoteDataStorage
 }

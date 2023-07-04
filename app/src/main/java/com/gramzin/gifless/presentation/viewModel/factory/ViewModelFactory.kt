@@ -7,17 +7,12 @@ import com.gramzin.gifless.domain.usecases.GetNextTopGifsUseCase
 import com.gramzin.gifless.presentation.viewModel.ProgrammingFragmentViewModel
 import com.gramzin.gifless.presentation.viewModel.TopFragmentViewModel
 import javax.inject.Inject
+import javax.inject.Provider
 
-@Suppress("UNCHECKED_CAST")
 class ViewModelFactory @Inject constructor(
-    private val getNextTopGifsUseCase: GetNextTopGifsUseCase,
-    private val getNextProgrammingGifsUseCase: GetNextProgrammingGifsUseCase
+    private val viewModelProviders: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val viewModel = when(modelClass){
-            TopFragmentViewModel::class.java -> TopFragmentViewModel(getNextTopGifsUseCase)
-            else -> ProgrammingFragmentViewModel(getNextProgrammingGifsUseCase)
-        }
-        return viewModel as T
+        return viewModelProviders[modelClass]?.get() as T
     }
 }

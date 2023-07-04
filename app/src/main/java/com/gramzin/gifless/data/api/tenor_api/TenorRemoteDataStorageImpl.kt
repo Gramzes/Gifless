@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GifRemoteDataStorageImpl @Inject constructor(private val service: TenorGifsApi): GifRemoteDataStorage {
+class TenorRemoteDataStorageImpl @Inject constructor(private val service: TenorGifsApi): GifRemoteDataStorage {
     private var nextPageInProgramming: String? = null
     private var nextPageInTop: String? = null
 

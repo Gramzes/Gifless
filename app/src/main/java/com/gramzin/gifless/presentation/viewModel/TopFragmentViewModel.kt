@@ -9,8 +9,11 @@ import com.gramzin.gifless.domain.models.Gif
 import com.gramzin.gifless.domain.usecases.GetNextTopGifsUseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
-class TopFragmentViewModel(private val nextTopGifsUseCase: GetNextTopGifsUseCase): ViewModel() {
+class TopFragmentViewModel @Inject constructor(
+    private val nextTopGifsUseCase: GetNextTopGifsUseCase
+    ): ViewModel() {
     private var downloadedGifs = mutableListOf<Gif>()
     private var currentGifIndex = -1
     private var _currentGif = MutableLiveData<Gif>()

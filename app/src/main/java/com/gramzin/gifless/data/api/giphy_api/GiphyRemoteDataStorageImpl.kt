@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class GifRemoteDataStorageImpl @Inject constructor(private val service: GiphyGifsApi): GifRemoteDataStorage {
+class GiphyRemoteDataStorageImpl @Inject constructor(private val service: GiphyGifsApi): GifRemoteDataStorage {
     private var offsetInProgramming: Int = 0
     private var offsetInTop: Int = 0
 
